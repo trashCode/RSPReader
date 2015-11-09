@@ -14,29 +14,31 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 
-namespace WpfApplication1
+namespace WpfApplication1.TreeView_control
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    public class Oiseau
+    {
+        public string nom { get; set; }
+        public Int32 envergure { get; set; }
+
+
+        public Oiseau()
+        {
+
+        }
+        public Oiseau(string nom, Int32 envergure)
+        {
+            this.nom = nom;
+            this.envergure = envergure;
+        }
+    }
+
     public partial class MainWindow : Window
     {
-        class Oiseau
-        {
-            public string nom {get; set; }
-            public Int32 envergure { get; set; }
-            
-
-            public Oiseau()
-            {
-
-            }
-            public Oiseau(string nom, Int32 envergure)
-            {
-                this.nom = nom;
-                this.envergure = envergure;
-            }
-        }
+        
 
         List<Oiseau> vivarium = new List<Oiseau>();
         ObservableCollection<Oiseau> liveArium = new ObservableCollection<Oiseau>();
@@ -48,8 +50,7 @@ namespace WpfApplication1
             liveArium.Add(new Oiseau("canard breton", 22));
             liveArium.Add(new Oiseau("albatros", 90));
             lbVivarium.ItemsSource = liveArium;
-
-
+            tvVivarium.ItemsSource = liveArium;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
