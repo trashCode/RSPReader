@@ -34,7 +34,7 @@ namespace WpfApplication1.TreeView_control
             this.nom = nom;
             this.envergure = envergure;
         }
-    }
+    }//Oiseau
 
     public partial class MainWindow : Window
     {
