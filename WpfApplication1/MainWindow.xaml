@@ -18,8 +18,8 @@
         <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75" Click="btnRemove_Click" RenderTransformOrigin="2.147,0.636" TabIndex="4"/>
         <TextBox x:Name="textNom" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" RenderTransformOrigin="-3.744,0.192" TabIndex="1"/>
         <TextBox x:Name="textEnvergure" HorizontalAlignment="Left" Height="22" Margin="123,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" RenderTransformOrigin="-3.744,0.192" TabIndex="2"/>
-        <ListBox Name="lbVivarium" HorizontalContentAlignment="Stretch" Margin="10,37,0,10" SelectionChanged="lbVivarium_SelectionChanged" HorizontalAlignment="Left" Width="214">
-            <ListBox.ItemTemplate>
+        <ListBox Name="lbVivarium" HorizontalContentAlignment="Stretch" Margin="10,42,0,5" HorizontalAlignment="Left" Width="214">
+            <!-- <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,2">
                         <Grid.ColumnDefinitions>
@@ -29,8 +29,8 @@
                         <TextBlock Text="{Binding nom}" />
                         <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding envergure}" Cursor="" />
                     </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+    </DataTemplate> 
+    </ListBox.ItemTemplate> -->
         </ListBox>
         <TextBlock x:Name="txtDetails" HorizontalAlignment="Left" Margin="319,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.06,-0.25" Height="29" Width="65"/>
         <Label Content="details" Margin="229,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85"/>
@@ -44,6 +44,7 @@
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
+        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="432,35,0,0" VerticalAlignment="Top" Width="75" Click="btnLoad_Click"/>
 
     </Grid>
 </Window>

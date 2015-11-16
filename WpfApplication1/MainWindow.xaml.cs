@@ -102,5 +102,13 @@ namespace WpfApplication1.TreeView_control
 
             }
         }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            string startFolder = @"C:\Users\gregory\Downloads\69080041";
+            IEnumerable<string> fileList = System.IO.Directory.GetFiles(startFolder, "*.rs_", System.IO.SearchOption.TopDirectoryOnly);
+            lbVivarium.ItemsSource = fileList;
+            btnLoad.Content = fileList.Count();
+        }
     }
 }
