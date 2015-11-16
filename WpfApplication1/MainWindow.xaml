@@ -36,8 +36,11 @@
         <Label Content="details" Margin="229,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85"/>
         <TreeView Name="tvVivarium" Margin="229,74,10,10">
             <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type self:Oiseau}" ItemsSource="{Binding Members}">
-                    <TextBlock Text="{Binding nom}" />
+                <HierarchicalDataTemplate DataType="{x:Type self:Espece}" ItemsSource="{Binding Path=membres}">
+                    <TextBlock Text="{Binding Path=titre}" />
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type self:Oiseau}" ItemsSource="{Binding Path=sous_especes}">
+                    <TextBlock Text="{Binding Path=nom}" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>

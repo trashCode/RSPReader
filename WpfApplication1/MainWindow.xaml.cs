@@ -19,20 +19,35 @@ namespace WpfApplication1.TreeView_control
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    public class Espece
+    {
+        public string titre { get; set; }
+        public ObservableCollection<Oiseau> membres { get; set; }
+
+        public Espece(string nom)
+        {
+            this.titre = nom;
+            this.membres = new ObservableCollection<Oiseau>();
+        }
+    }
+    
     public class Oiseau
     {
         public string nom { get; set; }
         public Int32 envergure { get; set; }
+        public ObservableCollection<Oiseau> sous_especes {get;set;}
 
+        
 
         public Oiseau()
         {
-
+            this.sous_especes = new ObservableCollection<Oiseau>();
         }
         public Oiseau(string nom, Int32 envergure)
         {
             this.nom = nom;
             this.envergure = envergure;
+            this.sous_especes = new ObservableCollection<Oiseau>();
         }
     }//Oiseau
 
@@ -41,22 +56,30 @@ namespace WpfApplication1.TreeView_control
         
 
         List<Oiseau> vivarium = new List<Oiseau>();
-        ObservableCollection<Oiseau> liveArium = new ObservableCollection<Oiseau>();
+        ObservableCollection<Espece> liveArium = new ObservableCollection<Espece>();
 
         public MainWindow()
         {
             InitializeComponent();
-            liveArium.Add(new Oiseau("canard mandarin", 12));
-            liveArium.Add(new Oiseau("canard breton", 22));
-            liveArium.Add(new Oiseau("albatros", 90));
-            lbVivarium.ItemsSource = liveArium;
+            Oiseau c1 = new Oiseau("canard", 10);
+            c1.sous_especes.Add(new Oiseau("canard mandarin", 90));
+            c1.sous_especes.Add(new Oiseau("col vert", 100));
+            Espece e1 = new Espece("Grands");
+            e1.membres.Add(new Oiseau("albatros", 90));
+            liveArium.Add(e1);
+            liveArium.Add(new Espece("petits"));
+            liveArium[1].membres.Add(new Oiseau("canard commun", 25));
+            liveArium[1].membres[0].sous_especes.Add(new Oiseau("canard col vert", 20));
+            liveArium[1].membres[0].sous_especes.Add(new Oiseau("poule d'eau", 18));
+            liveArium[1].membres.Add(new Oiseau("canard mandarin", 15));
+            //lbVivarium.ItemsSource = liveArium;
             tvVivarium.ItemsSource = liveArium;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Oiseau o = new Oiseau(textNom.Text , Int32.Parse(textEnvergure.Text));
-            liveArium.Add(o);
+            //liveArium.Add(o);
             
 
         }
@@ -67,9 +90,7 @@ namespace WpfApplication1.TreeView_control
         {
             if (liveArium.Count > 0)
             {
-                string btnText = liveArium.Last().nom;
                 liveArium.Remove(liveArium.Last());
-
             }
         }
 
